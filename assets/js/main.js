@@ -2,20 +2,32 @@ var app = app || {};
 
 app.login = function() {
     
-    swal(config.login,
+    swal(config.login.modal,
     
     function(isConfirm){
         
         if (isConfirm) {
             
-            swal("Success!", "One moment while we set up the awesome!", "success");
+            /*
+              
+              Wait two seconds then redirect to the authorize login
+                
+            */
+            var tid = window.setTimeout(function(){
+                window.clearTimeout(tid);
+                var params = encodeURIComponent( config.login.oauth.params );
+                window.location = config.login.oauth.authorizeUrl + '?' + params;
+            }, 2000);
         
         } else {
         
+            /*
+            
+                Wait two seconds then log in again
+                  
+            */
             swal("Cancelled", "You have to be logged in to use SmartView", "error");
         }
-        
-        return isConfirm;
         
     });
     
@@ -23,5 +35,8 @@ app.login = function() {
 
 
 if( ! app.login() ) {
-    app.login();
+    
+    var btn_signin = document.getElementById('btn_signin');
+    btn_signin.onclick = app.login;
+    
 };
