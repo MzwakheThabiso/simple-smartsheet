@@ -2,7 +2,7 @@ var app = app || {};
 
 app.login = function() {
     
-    swal(config.login),
+    swal(config.login,
     
     function(isConfirm){
         
