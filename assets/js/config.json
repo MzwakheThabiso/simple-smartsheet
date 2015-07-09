@@ -1,9 +1,0 @@
-var config = config || {};
-
-config.database = {
-    name : "sql383324"
-    user : "sql383324",
-    pass : "rl8*fQ2%",
-    port : 3306
-    
-}
