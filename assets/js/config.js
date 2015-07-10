@@ -9,7 +9,7 @@ var config = config || {};
 */
 config.smartsheet = {
     
-    clientId : "",
+    clientId : "lnkgam3l8hwt8p4svz",
     appSecret : ""
     
 }
@@ -34,7 +34,7 @@ config.login = {
         type  : "info",
         html  : true,
         
-        closeOnConfirm    : false,
+        closeOnConfirm    : true,
         showConfirmButton : true,
         confirmButtonText : "Sign In",
         
