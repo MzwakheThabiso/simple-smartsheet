@@ -15,8 +15,9 @@ app.login = function() {
             */
             var tid = window.setTimeout(function(){
                 window.clearTimeout(tid);
-                var params = encodeURIComponent( config.login.oauth.params );
-                window.location = config.login.oauth.authorizeUrl + '?' + params;
+                
+                window.location = config.login.oauth.authorizeUrl + '?' + $.param(config.login.oauth.params);
+                
             }, 2000);
         
         } else {
@@ -35,8 +36,5 @@ app.login = function() {
 
 
 if( ! app.login() ) {
-    
-    var btn_signin = document.getElementById('btn_signin');
-    btn_signin.onclick = app.login;
-    
+    $('#btn_signin').on('click', app.login);
 };
