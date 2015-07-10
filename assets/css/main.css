@@ -1,8 +1,15 @@
 header {
     vertical-align: bottom;
     border-bottom: solid 1px #eee;
+    margin-bottom: 10px;
 }
 
 .logo {
+    
     max-width: 100px;
+     
+}
+
+.smartsheet {
+    color: #3a6693;
 }

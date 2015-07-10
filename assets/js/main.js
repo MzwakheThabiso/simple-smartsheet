@@ -2,35 +2,33 @@ var app = app || {};
 
 app.login = function() {
     
-    swal({
-        title : "Let's Get Started!",
-        text  : "You must first sign in to your <strong>smartsheet</strong> account",
-        type  : "info",
-        html  : true,
-        
-        showConfirmButton : true,
-        confirmButtonText : "Sign In",
-        
-        showCancelButton  : true,
-        cancelButtonText  : "Nevermind",
-        
-        closeOnConfirm    : false,
-        closeOnCancel     : false,
-        //imageUrl          : "http://lh3.googleusercontent.com/yQ3iHbrAsf2gmHVr9r8SE_XdIKDEJ4KJdyrqDMPIPbBmwehFW81e0M1SSRjmArPz0Cah3W6nDC5v6BPf=s120?gr=14285c03a63"
-    },
+    swal(config.login.modal,
     
     function(isConfirm){
         
         if (isConfirm) {
             
-            swal("Success!", "One moment while we set up the awesome!", "success");
+            /*
+              
+              Wait two seconds then redirect to the authorize login
+                
+            */
+            var tid = window.setTimeout(function(){
+                window.clearTimeout(tid);
+                
+                window.location = config.login.oauth.authorizeUrl + '?' + $.param(config.login.oauth.params);
+                
+            }, 2000);
         
         } else {
         
+            /*
+            
+                Wait two seconds then log in again
+                  
+            */
             swal("Cancelled", "You have to be logged in to use SmartView", "error");
         }
-        
-        return isConfirm;
         
     });
     
@@ -38,5 +36,5 @@ app.login = function() {
 
 
 if( ! app.login() ) {
-    app.login();
+    $('#btn_signin').on('click', app.login);
 };
