@@ -2,7 +2,7 @@ var app = app || {};
 
 app.login = function() {
     
-    swal(config.login.modal,
+    swal(config.login.modal.start,
     
     function(isConfirm){
         
@@ -10,8 +10,7 @@ app.login = function() {
             
             /*
               
-              Wait two seconds then redirect to the authorize login.  Why wait?  Operations
-              that ocurr two fast in certain instances can fool a user into believing 
+              Redirect to oAuth page
                 
             */
             window.location = config.login.oauth.authorizeUrl + '?' + $.param(config.login.oauth.params);
@@ -23,7 +22,9 @@ app.login = function() {
                 Wait two seconds then log in again
                   
             */
-            swal("Cancelled", "You have to be logged in to use SmartView", "error");
+            swal(config.login.modal.canceled, function(){
+                app.login(); 
+            });
         }
         
     });

@@ -35,26 +35,35 @@ config.smartsheet = {
 */
 config.login = {
     
-    /**
-        @class modal
-        @desc Configuration values for the login modal.
-        
-    */
     modal : {
         
-        title : "Let's Get Started!",
-        text  : "You must first sign in to your <strong class=\"smartsheet\">smartsheet</strong> account",
-        type  : "info",
-        html  : true,
+        start : {
+    
+            title : "Let's Get Started!",
+            text  : "You must first sign in to your <strong class=\"smartsheet\">smartsheet</strong> account",
+            type  : "info",
+            html  : true,
+            
+            closeOnConfirm    : true,
+            showConfirmButton : true,
+            confirmButtonText : "Get Started!",
+            
+            closeOnCancel     : false,    
+            showCancelButton  : true,
+            cancelButtonText  : "Nevermind",
+        },
         
-        closeOnConfirm    : true,
-        showConfirmButton : true,
-        confirmButtonText : "Get Started!",
-        
-        closeOnCancel     : false,    
-        showCancelButton  : true,
-        cancelButtonText  : "Nevermind",
+        canceled : {
+            title : "Cancelled",
+            text  : "You have to be logged in to use SmartView",
+            type  : "error",
+            timer: 2000,
+            showConfirmButton : false                 
+        },
+
     },
+
+        
     
     /**
       
