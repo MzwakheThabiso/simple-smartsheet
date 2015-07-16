@@ -2,7 +2,7 @@ var app = app || {};
 
 app.login = function() {
     
-    swal(config.login.modal,
+    swal(config.login.modal.start,
     
     function(isConfirm){
         
@@ -10,16 +10,11 @@ app.login = function() {
             
             /*
               
-              Wait two seconds then redirect to the authorize login
+              Redirect to oAuth page
                 
             */
-            var tid = window.setTimeout(function(){
-                window.clearTimeout(tid);
-                
-                window.location = config.login.oauth.authorizeUrl + '?' + $.param(config.login.oauth.params);
-                
-            }, 2000);
-        
+            window.location = config.login.oauth.authorizeUrl + '?' + $.param(config.login.oauth.params);
+                     
         } else {
         
             /*
@@ -27,14 +22,13 @@ app.login = function() {
                 Wait two seconds then log in again
                   
             */
-            swal("Cancelled", "You have to be logged in to use SmartView", "error");
+            swal(config.login.modal.canceled, function(){
+                app.login(); 
+            });
         }
         
     });
     
 };
 
-
-if( ! app.login() ) {
-    $('#btn_signin').on('click', app.login);
-};
+app.login();
