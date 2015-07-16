@@ -1,5 +1,18 @@
 var config = config || {};
 /**
+   @class config.database.mysql
+   @desc Configuration for our MySQL Server
+*/
+config.database = {
+   mysql : {
+       name : "",
+       user : "",
+       pass : "",
+       port : 3306,
+       host : ""
+   }
+};
+/**
   
   
   @class config.smartsheet 
@@ -12,7 +25,7 @@ config.smartsheet = {
     clientId : "",
     appSecret : ""
     
-}
+};
 /**
   
   @class config.login 
